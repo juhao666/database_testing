@@ -46,5 +46,5 @@ SET DATABASENAME="test"
 ## New Test Case Guide:
 ### specify parameters in tcs
 ```python
-t = [dict(name=assert_sp, timeout=None, args=('dbo.rpt_CurrentInventoryListing_BY_eliu2','dbo.rpt_CurrentInventoryListing', (310001, None,)))]
+t = [dict(name=assert_sp, timeout=None, args=('dbo.rpt_sp_test_erik','dbo.rpt_sp_test', (310001, None,)))]
 ```
