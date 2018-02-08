@@ -1,0 +1,11 @@
+{
+    "mssql": {
+        "type": "MSSQL",
+        "version": 2012,
+        "hostname": "",
+        "port": ,
+        "username": "",
+        "password": "",
+        "databasename": ""
+    }
+}
