@@ -15,6 +15,9 @@ from SPTest import perftest
 def assert_sp(spName1, spName2, params):
     perftest.compare2SPs(spName1, spName2, params)
 
+def assert_var_sp(spName1, spName2, params):
+    perftest.compare2SP_var(spName1, spName2, params)
+
 # def rpt_CurrentInventoryListing(spName1, spName2, params):
 #     perftest.compare2SPs(spName1, spName2, params)
 #

@@ -15,6 +15,36 @@ from SPTest import mssqlDao
 from PDBC.table import Table
 
 
+def compare2SP_var(spName1, spName2, params):
+    """
+        The function calls 2 store procedures, and compare whether the 2 result sets are same.
+        """
+    """Test Program after optimization"""
+    print('[INFO]:  Test Case {} is running'.format(spName2))
+    # print(params)
+    rs1 = mssqlDao.select('exec ' + spName1 + ' ' + params)
+    interval1 = tcTime.TIMEUSED
+    sql = "INSERT INTO DBCodesTestResults(ProgramName1,ElapsedTime1,ParameterValues,CreatedDT) \
+                   VALUES(%s,%d,%s,%s)"
+    # spParams = (spName1, interval1, str(params).replace("'", "''").replace('None', 'NULL'),str(datetime.now())[0:-3])
+    spParams = (spName1, interval1, str(params).replace('None', 'NULL'), str(datetime.now())[0:-3])
+    newid = mssqlDao.insert(sql, spParams)
+    # clear the database cache
+    mssqlDao.clear_cache()
+    """Test Program before optimization"""
+    if spName2 is not None:
+        rs2 = mssqlDao.select('exec ' + spName2 + ' ' + params)
+        interval2 = tcTime.TIMEUSED
+        sql = "UPDATE DBCodesTestResults SET ProgramName2='{}',ElapsedTime2 = {} ,ModifiedDT = '{}' WHERE PKID= {}"
+        spParams = (spName2, interval2, str(datetime.now())[0:-3], newid)
+        mssqlDao.update(sql, spParams)
+        if _eq(rs1, rs2):
+            str_output = '[INFO]:  Test Case {} completed successfully! [{}s VS {}s]'
+        else:
+            str_output = '[ERROR]: Test Case {} completed with error!'
+    print(str_output.format(spName2, interval1, interval2))
+
+
 def compare2SPs(spName1, spName2, params):
     """
     The function calls 2 store procedures, and compare whether the 2 result sets are same.

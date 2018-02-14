@@ -27,8 +27,5 @@ SET NOCOUNT ON
 :r .\StoredProcedures\rpt_CurrentInventoryListing_BY_eliu2.sql
 :r .\StoredProcedures\rpt_internetsales_BY_eliu2.sql
 :r .\StoredProcedures\rpt_EventNoticeForCreditBalance_BY_eliu2.sql
-
---Test Case
---:r .\TestCases\TC_rpt_PercentageOfRevenue.sql
---:r .\TestCases\TC_rpt_StatementDetailTotals.sql
---:r .\TestCases\TC_rpt_TransactionDetailByAgent.sql
+:r .\StoredProcedures\DynamicSearch_LicenseTopLevel_BY_eliu2.sql
+:r .\StoredProcedures\LicenseTopLevel_Search_BY_eliu2.sql

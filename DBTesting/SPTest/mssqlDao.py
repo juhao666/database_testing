@@ -20,6 +20,13 @@ def callsp(sp, paras):
     return rs
 
 
+@tcTime.timeinterval
+def select(sql):
+    conn = PyMSSQL.MSSqlConn()
+    rs = conn.select(sql)
+    return rs
+
+
 def insert(sql, params):
     conn = PyMSSQL.MSSqlConn()
     # spname = params[0]
